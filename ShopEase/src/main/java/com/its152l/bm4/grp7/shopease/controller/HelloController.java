@@ -12,4 +12,9 @@ public class HelloController {
         model.addAttribute("message", "Hello, ShopEase World!");
         return "hello"; // Freemarker will look for hello.ftlh
     }
+
+    @GetMapping("/custom-login")
+    public String customLogin(Model model) {
+        return "login"; // This will use login.ftlh template
+    }
 }
