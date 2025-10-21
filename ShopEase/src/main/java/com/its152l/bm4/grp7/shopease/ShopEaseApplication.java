@@ -1,4 +1,4 @@
-package com.its152l.bm4.grp7.shopease.ShopEase;
+package com.its152l.bm4.grp7.shopease;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
