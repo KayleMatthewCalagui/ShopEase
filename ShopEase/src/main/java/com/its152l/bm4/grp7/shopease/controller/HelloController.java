@@ -17,4 +17,10 @@ public class HelloController {
     public String customLogin(Model model) {
         return "login"; // This will use login.ftlh template
     }
+
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
+
 }
