@@ -27,10 +27,10 @@
     </style>
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 flex items-center justify-center p-4 relative overflow-hidden">
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 flex items-center justify-center p-4 relative ">
 
     <!-- Animated background elements -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute inset-0  pointer-events-none">
         <div class="absolute w-96 h-96 bg-blue-500/20 rounded-full blur-3xl top-0 left-1/4 animate-pulse-slow"></div>
         <div class="absolute w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl bottom-0 right-1/4 animate-pulse-slow"></div>
         <div class="absolute w-64 h-64 bg-blue-400/10 rounded-full blur-3xl top-1/2 left-0 animate-pulse-slow"></div>
@@ -91,7 +91,7 @@
 
                 <!-- Navigation buttons -->
                 <nav class="flex flex-col gap-3 mb-8">
-                    <a href="/hello" class="group relative bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg shadow-blue-500/50 hover:shadow-xl hover:shadow-blue-500/60 transform hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 overflow-hidden">
+                    <a href="/hello" class="group relative bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg shadow-blue-500/50 hover:shadow-xl hover:shadow-blue-500/60 transform hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 ">
                         <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div class="relative flex items-center justify-center gap-3">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
