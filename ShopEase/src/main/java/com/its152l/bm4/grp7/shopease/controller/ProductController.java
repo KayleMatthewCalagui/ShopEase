@@ -23,6 +23,14 @@ public class ProductController {
         return "products/list";
     }
 
+    @GetMapping("/store")
+    public String store(Model model) {
+        model.addAttribute("latestProducts", productRepository.findAll());
+        model.addAttribute("popularProducts", productRepository.findAll());
+        return "products/products";
+    }
+
+
     @GetMapping("/new")
     public String showForm(Model model) {
         model.addAttribute("product", new Product());
