@@ -5,7 +5,6 @@ import com.its152l.bm4.grp7.shopease.dto.CreateOrderRequest;
 import com.its152l.bm4.grp7.shopease.dto.CreateOrderResponse;
 import com.its152l.bm4.grp7.shopease.service.OrderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
