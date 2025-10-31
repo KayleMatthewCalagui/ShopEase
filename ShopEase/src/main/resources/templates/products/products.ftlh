@@ -111,8 +111,13 @@
                         <h3 class="text-slate-400 text-sm mb-2 uppercase tracking-wider">
                             ${product.name}
                         </h3>
+
                         <p class="text-white font-bold text-lg">
                             $${product.price?string["0.00"]}
+                        </p>
+
+                        <p class="text-slate-400 text-sm mb-3">
+                            In Stock: <span class="text-blue-400 font-semibold">${product.stock}</span>
                         </p>
                     </div>
 
@@ -125,19 +130,6 @@
                             Add to Cart
                         </button>
                     </form>
-                </div>
-                </#list>
-            </div>
-        </div>
-    </section>
-
-    <!-- Brand Partners Section -->
-    <section class="relative py-16">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
-                <#list 1..5 as i>
-                <div class="aspect-video bg-slate-900/30 backdrop-blur-sm rounded-xl border border-blue-500/10 flex items-center justify-center hover:border-blue-500/30 transition-all">
-                    <span class="text-slate-600 text-2xl font-bold tracking-widest">BRAND</span>
                 </div>
                 </#list>
             </div>
