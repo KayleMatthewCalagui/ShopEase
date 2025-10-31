@@ -44,12 +44,19 @@
                     <li><a href="/contact" class="hover:text-blue-400 transition-colors">Contact</a></li>
                 </ul>
 
-                <!-- Cart Icon -->
-                <button class="w-12 h-12 rounded-full border-2 border-blue-400/50 flex items-center justify-center hover:bg-blue-500/20 hover:border-blue-400 transition-all group">
-                    <svg class="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                <!-- Cart Icon (View Cart) -->
+                <a href="/cart/view"
+                class="w-12 h-12 rounded-full border-2 border-blue-400/50 flex items-center justify-center 
+                        hover:bg-blue-500/20 hover:border-blue-400 transition-all group relative">
+
+                    <!-- Cart SVG Icon -->
+                    <svg class="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0
+                                a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
-                </button>
+                </a>
             </div>
         </div>
     </nav>
@@ -108,44 +115,16 @@
                             $${product.price?string["0.00"]}
                         </p>
                     </div>
-                </div>
-                </#list>
-            </div>
-        </div>
-    </section>
 
-    <!-- Popular Products Section -->
-    <section class="relative py-16">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-white mb-12 tracking-wider">
-                POPULAR PRODUCTS
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <#list popularProducts as product>
-                <div class="group relative bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-blue-500/20 hover:border-blue-500/40 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20">
-                    <#if product.discount??>
-                    <div class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10">
-                        -${product.discount}%
-                    </div>
-                    </#if>
-
-                    <div class="aspect-square bg-slate-800/50 flex items-center justify-center p-8">
-                        <div class="w-full h-full bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-xl flex items-center justify-center">
-                            <svg class="w-24 h-24 text-blue-400/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="p-6 text-center">
-                        <h3 class="text-slate-400 text-sm mb-2 uppercase tracking-wider">
-                            ${product.name}
-                        </h3>
-                        <p class="text-white font-bold text-lg">
-                            $${product.price?string["0.00"]}
-                        </p>
-                    </div>
+                    <!-- Add to Cart Button -->
+                    <form action="/cart/add" method="post" class="mt-4">
+                        <input type="hidden" name="productId" value="${product.id}">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit"
+                            class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg shadow-md transition-all hover:scale-105">
+                            Add to Cart
+                        </button>
+                    </form>
                 </div>
                 </#list>
             </div>
