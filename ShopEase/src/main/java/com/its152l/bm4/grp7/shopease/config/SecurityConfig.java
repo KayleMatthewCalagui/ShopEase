@@ -22,13 +22,15 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 // ✅ Public pages (no login required)
-                .requestMatchers(
-                    "/", 
-                    "/home", 
-                    "/products/store",  // Public product page
-                    "/css/**", 
-                    "/js/**", 
-                    "/images/**"
+                    .requestMatchers(
+                            "/",
+                            "/home",
+                            "/products/store",  // Public product page
+                            "/css/**",
+                            "/js/**",
+                            "/images/**",
+                            "/login",           // Add login to permitted
+                            "/register"
                 ).permitAll()
 
                 // ✅ Everything else requires authentication
