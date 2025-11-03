@@ -45,27 +45,27 @@
                     </#list>
                 </tbody>
             </table>
-
-            <!-- ✅ Footer row with aligned buttons -->
-            <div class="flex justify-between items-center mt-6">
-                <button type="submit"
-                        class="bg-yellow-500 hover:bg-yellow-600 px-6 py-2 rounded-lg text-white font-semibold transition-all">
-                    Update Cart
-                </button>
-
-                <div class="flex flex-col items-end">
-                    <p class="text-lg font-semibold mb-3">Total: $${total?string["0.00"]}</p>
-
-                    <!-- Separate checkout form aligned perfectly under the total -->
-                    <form action="/cart/checkout" method="post">
-                        <button type="submit"
-                                class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg text-white font-semibold transition-all">
-                            Checkout
-                        </button>
-                    </form>
-                </div>
-            </div>
         </form>
+
+        <!-- ✅ Footer row with aligned buttons -->
+        <div class="flex justify-between items-center mt-6">
+            <button type="submit"
+                    class="bg-yellow-500 hover:bg-yellow-600 px-6 py-2 rounded-lg text-white font-semibold transition-all">
+                Update Cart
+            </button>
+
+            <div class="flex flex-col items-end">
+                <p class="text-lg font-semibold mb-3">Total: $${total?string["0.00"]}</p>
+
+                <!-- Separate checkout form aligned perfectly under the total -->
+                <form action="/cart/checkout" method="post">
+                    <button type="submit"
+                            class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg text-white font-semibold transition-all">
+                        Checkout
+                    </button>
+                </form>
+            </div>
+        </div>
     </#if>
 </div>
 </body>
