@@ -48,11 +48,11 @@
         <div style="position: relative; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); border: 1px solid rgba(59, 130, 246, 0.3); padding: 40px;">
 
             <!-- Back link -->
-            <a href="/categories" style="text-decoration: none; color: #94a3b8; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 20px; transition: all 0.3s;">
+            <a href="/" style="text-decoration: none; color: #94a3b8; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 20px; transition: all 0.3s;">
                 <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                 </svg>
-                Back to Categories
+                Back to Home
             </a>
 
             <!-- Icon and Title -->
