@@ -30,6 +30,66 @@
         button:active {
             transform: translateY(0px);
         }
+
+        .image-upload-container {
+            position: relative;
+            width: 100%;
+            min-height: 200px;
+            border: 2px dashed rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            background-color: rgba(30, 41, 59, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .image-upload-container:hover {
+            border-color: rgba(59, 130, 246, 0.6);
+            background-color: rgba(30, 41, 59, 0.5);
+        }
+
+        .image-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            max-height: 300px;
+        }
+
+        .upload-placeholder {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .remove-image-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .remove-image-btn:hover {
+            background: rgba(220, 38, 38, 1);
+            transform: scale(1.1);
+        }
+
+        #imageInput {
+            display: none;
+        }
     </style>
 </head>
 
@@ -68,10 +128,31 @@
                 </h2>
             </div>
 
-            <form action="/products/save" method="post" style="display: flex; flex-direction: column; gap: 20px;">
+            <form action="/products/save" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 20px;">
                 <#if product?? && product.id??>
                     <input type="hidden" name="id" value="${product.id}">
                 </#if>
+
+                <!-- Image Upload -->
+                <div style="width: 100%;">
+                    <label style="display: block; font-weight: 600; color: #e2e8f0; margin-bottom: 8px; font-size: 14px;">Product Image</label>
+                    <div class="image-upload-container" id="imageUploadContainer" onclick="document.getElementById('imageInput').click()">
+                        <div class="upload-placeholder" id="uploadPlaceholder">
+                            <svg style="width: 48px; height: 48px; color: #60a5fa; margin: 0 auto 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <p style="color: #e2e8f0; margin: 0 0 4px 0; font-size: 14px; font-weight: 500;">Click to upload product image</p>
+                            <p style="color: #94a3b8; margin: 0; font-size: 12px;">PNG, JPG, GIF up to 10MB</p>
+                        </div>
+                        <img id="imagePreview" class="image-preview" style="display: none;" alt="Product preview">
+                        <button type="button" id="removeImageBtn" class="remove-image-btn" style="display: none;" onclick="event.stopPropagation(); removeImage()">
+                            <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <input type="file" id="imageInput" name="image" accept="image/*" onchange="previewImage(event)">
+                </div>
 
                 <!-- Name -->
                 <div style="width: 100%;">
@@ -131,6 +212,53 @@
         <div class="animate-pulse-slow" style="position: absolute; top: -24px; right: -24px; width: 128px; height: 128px; background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%); border-radius: 50%; filter: blur(30px); pointer-events: none;"></div>
         <div class="animate-pulse-slow" style="position: absolute; bottom: -24px; left: -24px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%); border-radius: 50%; filter: blur(30px); pointer-events: none; animation-delay: 2s;"></div>
     </div>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('imagePreview');
+                    const placeholder = document.getElementById('uploadPlaceholder');
+                    const removeBtn = document.getElementById('removeImageBtn');
+                    
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    placeholder.style.display = 'none';
+                    removeBtn.style.display = 'flex';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeImage() {
+            const preview = document.getElementById('imagePreview');
+            const placeholder = document.getElementById('uploadPlaceholder');
+            const removeBtn = document.getElementById('removeImageBtn');
+            const input = document.getElementById('imageInput');
+            
+            preview.src = '';
+            preview.style.display = 'none';
+            placeholder.style.display = 'block';
+            removeBtn.style.display = 'none';
+            input.value = '';
+        }
+
+        // If editing and there's an existing image, show it
+        <#if product?? && product.imageUrl??>
+        window.addEventListener('DOMContentLoaded', function() {
+            const preview = document.getElementById('imagePreview');
+            const placeholder = document.getElementById('uploadPlaceholder');
+            const removeBtn = document.getElementById('removeImageBtn');
+            
+            preview.src = '${product.imageUrl}';
+            preview.style.display = 'block';
+            placeholder.style.display = 'none';
+            removeBtn.style.display = 'flex';
+        });
+        </#if>
+    </script>
 
 </body>
 </html>
