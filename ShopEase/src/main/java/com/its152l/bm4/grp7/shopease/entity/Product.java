@@ -26,4 +26,11 @@ public class Product {
 
     @Column(name = "stock_quantity")
     private Integer stock;
+
+    @Lob
+    @Column(name = "product_img", columnDefinition = "LONGBLOB")
+    private byte[] image;
+
+    @Transient
+    private String imageUrl; // used for display (Base64)
 }

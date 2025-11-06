@@ -183,9 +183,8 @@
                     <div class="aspect-square bg-gradient-to-br from-slate-800/50 to-slate-900/50 flex items-center justify-center p-8 relative overflow-hidden">
                         <div class="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div class="w-full h-full bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-500">
-                            <svg class="w-32 h-32 text-blue-400/40 group-hover:text-blue-400/60 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                            </svg>
+                            <img src="/products/image/${product.id}" alt="${product.name}" width="150" height="150">
+
                         </div>
                     </div>
 
@@ -282,8 +281,8 @@
                     </div>
                     <div class="flex-1">
                         <h4 class="text-white font-semibold mb-1">Added to Cart!</h4>
-                        <p class="text-slate-300 text-sm">${productName}</p>
-                        <p class="text-blue-400 font-bold mt-1">$${productPrice.toFixed(2)}</p>
+                        <p class="text-slate-300 text-sm">productName</p>
+                        <p class="text-blue-400 font-bold mt-1">$$productPrice</p>
                     </div>
                     <button onclick="this.parentElement.parentElement.remove()" class="text-slate-400 hover:text-white transition-colors">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
