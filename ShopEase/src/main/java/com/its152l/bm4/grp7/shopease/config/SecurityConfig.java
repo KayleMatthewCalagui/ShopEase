@@ -40,7 +40,7 @@ public class SecurityConfig {
             .formLogin(form -> form
                 .loginPage("/login")
                 .permitAll()
-                .defaultSuccessUrl("/products/store", false)
+                .defaultSuccessUrl("/", false)
                 .failureUrl("/login?error")
             )
             // ✅ Logout handling
