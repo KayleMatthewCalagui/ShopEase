@@ -44,7 +44,7 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s;
-            overflow: hidden;
+            overflow: auto;
         }
 
         .image-upload-container:hover {
@@ -93,10 +93,10 @@
     </style>
 </head>
 
-<body style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; position: relative; overflow: hidden;">
+<body style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; position: relative; overflow: auto;">
 
     <!-- Animated background elements -->
-    <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none;">
+    <div style="position: absolute; inset: 0; overflow: auto; pointer-events: none;">
         <div class="animate-pulse-slow" style="position: absolute; width: 384px; height: 384px; background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%); border-radius: 50%; top: 0; left: 25%; filter: blur(60px);"></div>
         <div class="animate-pulse-slow" style="position: absolute; width: 320px; height: 320px; background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%); border-radius: 50%; bottom: 0; right: 25%; filter: blur(60px); animation-delay: 2s;"></div>
     </div>
@@ -222,7 +222,7 @@
                     const preview = document.getElementById('imagePreview');
                     const placeholder = document.getElementById('uploadPlaceholder');
                     const removeBtn = document.getElementById('removeImageBtn');
-                    
+
                     preview.src = e.target.result;
                     preview.style.display = 'block';
                     placeholder.style.display = 'none';
@@ -237,7 +237,7 @@
             const placeholder = document.getElementById('uploadPlaceholder');
             const removeBtn = document.getElementById('removeImageBtn');
             const input = document.getElementById('imageInput');
-            
+
             preview.src = '';
             preview.style.display = 'none';
             placeholder.style.display = 'block';
@@ -251,7 +251,7 @@
             const preview = document.getElementById('imagePreview');
             const placeholder = document.getElementById('uploadPlaceholder');
             const removeBtn = document.getElementById('removeImageBtn');
-            
+
             preview.src = '${product.imageUrl}';
             preview.style.display = 'block';
             placeholder.style.display = 'none';
