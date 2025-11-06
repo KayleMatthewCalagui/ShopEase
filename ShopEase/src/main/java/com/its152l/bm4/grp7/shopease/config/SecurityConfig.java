@@ -33,15 +33,20 @@ public class SecurityConfig {
                             "/register"
                 ).permitAll()
 
+                // ✅ Admin-only section
+                .requestMatchers("/products").hasRole("ADMIN")
+
                 // ✅ Everything else requires authentication
                 .anyRequest().authenticated()
             )
+
+            
             // ✅ Custom login page
             .formLogin(form -> form
                 .loginPage("/login")
                 .permitAll()
                 .defaultSuccessUrl("/", false)
-                .failureUrl("/login?error")
+                .failureUrl("/")
             )
             // ✅ Logout handling
             .logout(logout -> logout
@@ -49,11 +54,24 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
             )
+
+            // Inline access denied handler
+            .exceptionHandling(ex -> ex
+                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                    // Redirect to homepage if user is not admin
+                    response.sendRedirect("/");
+                })
+            )
+
             // ✅ Allow H2 console or disable CSRF for simplicity (optional)
             .csrf(csrf -> csrf.disable());
 
+            
+
         return http.build();
     }
+
+    
 
     @Bean
     public PasswordEncoder passwordEncoder() {

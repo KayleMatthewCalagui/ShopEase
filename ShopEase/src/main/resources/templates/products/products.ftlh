@@ -103,7 +103,7 @@
                         Categories
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 group-hover:w-full transition-all duration-300"></span>
                     </a></li>
-                    <li><a href="/about" class="relative hover:text-blue-400 transition-colors group">
+                    <li><a href="/products/about" class="relative hover:text-blue-400 transition-colors group">
                         About
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 group-hover:w-full transition-all duration-300"></span>
                     </a></li>

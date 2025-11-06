@@ -116,5 +116,9 @@ public class ProductController {
         }
     }
 
-
+    @GetMapping("/about")
+        public String about(Model model) {
+            model.addAttribute("title", "About Us");
+            return "about"; // this will render templates/about.ftl
+        }
 }
